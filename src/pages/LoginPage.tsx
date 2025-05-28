@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Button, Card, Input, ThemeToggle } from '../components';
 import { Link, useNavigate } from 'react-router-dom';
 import { Plane, Lock, Mail } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 const LoginPage = () => {
   const [form, setForm] = useState({ email: '', password: '' });
