@@ -1,16 +1,16 @@
 // Magic UI-inspired landing page for SkyBook (React + Vite)
 import { motion } from 'framer-motion';
 import { Plane, Calendar, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, ThemeToggle } from '../components';
 import { cn } from '@/lib/utils';
 
 // Logo Component
 const Logo = ({ className }: { className?: string }) => (
-  <div className={cn('flex items-center gap-2', className)}>
+  <Link to="/" className={cn('flex items-center gap-2 cursor-pointer', className)}>
     <Plane className="h-6 w-6 text-primary-600 dark:text-primary-400" />
     <span className="font-bold text-xl">SkyBooker</span>
-  </div>
+  </Link>
 );
 
 // Menu items for the header
@@ -22,6 +22,7 @@ const menuItems = [
 
 // Header Component
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <header className="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
@@ -37,15 +38,35 @@ const Header = () => {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/login"
+            className="font-medium text-primary-600 dark:text-primary-400 hover:underline transition-colors"
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="ml-2 font-medium text-primary-600 dark:text-primary-400 hover:underline transition-colors"
+          >
+            Sign Up
+          </Link>
           <ThemeToggle />
         </nav>
-        <Button 
-          variant="primary"
-          onClick={() => window.location.href = '/booking'}
-          className="hidden md:inline-flex"
-        >
-          Book a Flight
-        </Button>
+        <div className="hidden md:inline-flex gap-2">
+          <Button 
+            variant="primary"
+            onClick={() => navigate('/booking')}
+          >
+            Book a Flight
+          </Button>
+          <Button 
+            variant="secondary"
+            onClick={() => navigate('/login')}
+            className="ml-2"
+          >
+            Login
+          </Button>
+        </div>
       </div>
     </header>
   );
@@ -72,6 +93,7 @@ const features = [
 
 // Hero section component
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <div className="relative min-h-[80vh] flex items-center justify-center">
       <div className="absolute inset-0 bg-gradient-to-br from-primary-600/90 to-primary-800/90 dark:from-primary-900/90 dark:to-primary-950/90" />
@@ -92,14 +114,32 @@ const HeroSection = () => {
         >
           Your journey begins here. Explore the world with us.
         </motion.p>
-        <Button 
-          variant="secondary"
-          size="lg"
-          onClick={() => window.location.href = '/booking'}
-          className="bg-white text-primary-600 hover:bg-white/90"
-        >
-          Book a Flight
-        </Button>
+        <div className="flex flex-col md:flex-row gap-4 justify-center">
+          <Button 
+            variant="secondary"
+            size="lg"
+            onClick={() => navigate('/booking')}
+            className="bg-white text-primary-600 hover:bg-white/90"
+          >
+            Book a Flight
+          </Button>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={() => navigate('/login')}
+            className="bg-primary-600 text-white hover:bg-primary-700"
+          >
+            Login
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate('/signup')}
+            className="border-primary-600 text-primary-600 hover:bg-primary-50"
+          >
+            Sign Up
+          </Button>
+        </div>
       </div>
     </div>
   );

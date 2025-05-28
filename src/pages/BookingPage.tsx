@@ -94,10 +94,11 @@ const BookingPage: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Plane className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-            <span className="text-xl font-bold">SkyBooker</span>
+            <a href="/" className="flex items-center gap-2 cursor-pointer">
+              <Plane className="h-6 w-6 text-primary-600 dark:text-primary-400" />
+              <span className="text-xl font-bold">SkyBooker</span>
+            </a>
           </motion.div>
-          
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <motion.a 
@@ -115,6 +116,22 @@ const BookingPage: React.FC = () => {
               whileTap={{ scale: 0.95 }}
             >
               Flights
+            </motion.a>
+            <motion.a
+              href="/login"
+              className="font-medium text-primary-600 dark:text-primary-400 hover:underline transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Login
+            </motion.a>
+            <motion.a
+              href="/signup"
+              className="font-medium text-primary-600 dark:text-primary-400 hover:underline transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Sign Up
             </motion.a>
             <ThemeToggle />
           </nav>
@@ -147,6 +164,12 @@ const BookingPage: React.FC = () => {
                 </a>
                 <a href="/booking" className="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                   Flights
+                </a>
+                <a href="/login" className="font-medium text-primary-600 dark:text-primary-400 hover:underline transition-colors">
+                  Login
+                </a>
+                <a href="/signup" className="font-medium text-primary-600 dark:text-primary-400 hover:underline transition-colors">
+                  Sign Up
                 </a>
               </div>
             </motion.div>
